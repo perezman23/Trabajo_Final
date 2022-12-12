@@ -8,9 +8,10 @@ import sqlite3
 def conexionBBDD():
     
     miConexion=sqlite3.connect("Usuario")
-    miCursor=miConexion.cursor()
+    miCursor=miConexion.cursor()   # Un cursor es un objeto de acceso a datos que se puede utilizar para recorrer el conjunto de filas de una tabla o insertar nuevas filas en una tabla. Los cursores 
+                                   # tienen tres formas: búsqueda, inserción y actualización.
     
-    try:
+    try:   # En Python, puedes usar los bloques try y except para manejar estos errores como excepciones.
         
         miCursor.execute('''
             CREATE TABLE DATOSUSUARIOS (
@@ -25,9 +26,9 @@ def conexionBBDD():
 
 
 def salirAplicacion():
-    valor=messagebox.askquestion("Salir", "Deseas salir de la Aplicación ?")
+    valor=messagebox.askquestion("Salir", "Deseas salir de la Aplicación ?") #askquestion() pero el resultado es "yes" o "no"
     if valor == "yes":
-        root.destroy()
+        root.destroy()  # la función de destroy() es eliminar la ventana.
 
 def limpiarCampos():
     
@@ -54,7 +55,7 @@ root=Tk()
 barraMenu = Menu(root)
 root.config(menu=barraMenu, width=1000, height=400)
 
-bbddMenu=Menu(barraMenu, tearoff=0)
+bbddMenu=Menu(barraMenu, tearoff=0)  # Un Tearoff le permite separar menús para la mayoría de los menús flotantes de creación de ventanas.
 bbddMenu.add_command(label="Conectar",command=conexionBBDD)
 bbddMenu.add_command(label="Salir", command=salirAplicacion)
 
@@ -81,7 +82,7 @@ barraMenu.add_cascade(label= "Ayuda",menu=ayudaMenu)
 miFrame=Frame(root, bg= "blue")
 miFrame.pack()
 
-miId=StringVar()
+miId=StringVar()  # Este componente permite meter o visualizar una línea de texto simple
 miAlta=StringVar()
 miLista=StringVar()
 
